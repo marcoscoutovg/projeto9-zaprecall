@@ -1,10 +1,11 @@
 import cards from "../cards";
-import setaPlay from "../assets/seta_play.png"
-import setaVirar from "../assets/seta_virar.png"
+import setaPlay from "../assets/seta_play.png";
+import setaVirar from "../assets/seta_virar.png";
+import certo from "../assets/icone_certo.png";
+import erro from "../assets/icone_erro.png";
+import quase from "../assets/icone_quase.png";
 import styled from 'styled-components';
 import { useState } from "react";
-
-
 
 function Perguntas() {
 
@@ -23,6 +24,7 @@ function IdCard({ question, number, answer }) {
 
     const [textoCard, setTextoCard] = useState("Pergunta");
     const [status, setStatus] = useState('numPergunta');
+    const [cor, setCor] = useState('#333333')
 
     function clicarPlay() {
         setTextoCard(question);
@@ -34,15 +36,86 @@ function IdCard({ question, number, answer }) {
         setStatus('Resposta');
     }
 
+    function clicarNaoLembrei() {
+        setStatus('errou');
+        setTextoCard('Pergunta');
+        setCor('#FF3030')
+
+    }
+
+    function clicarQuaseNaoLembrei() {
+        setStatus('quase');
+        setTextoCard('Pergunta');
+        setCor('#FF922E')
+    }
+
+    function clicarZap() {
+        setStatus('zap');
+        setTextoCard('Pergunta');
+        setCor('#2FBE34')
+    }
+
+
     return (
-        <Questao status={status}>
-            <TextCard data-test="flashcard-text" status={status}>{textoCard} {(status === "numPergunta" && number)}</TextCard>
-            <SetaPlay data-test="play-btn" status={status} onClick={clicarPlay} src={setaPlay} alt="seta" ></SetaPlay>
-            <SetaVirar data-test="turn-btn" status={status} onClick={clicarVirar} src={setaVirar}></SetaVirar>
+        <Questao data-test="flashcard" status={status}>
+            <TextCard
+                data-test="flashcard-text"
+                status={status}
+                cor={cor}>
+                {textoCard} {(status === "numPergunta" && number)}
+            </TextCard>
+
+            <SetaPlay
+                data-test="play-btn"
+                status={status}
+                onClick={clicarPlay}
+                src={setaPlay}
+                alt="seta" >
+            </SetaPlay>
+
+            <SetaVirar
+                data-test="turn-btn"
+                status={status}
+                onClick={clicarVirar}
+                src={setaVirar}>
+            </SetaVirar>
+
+            <IconNao
+                data-test="no-icon"
+                status={status}
+                src={erro}>
+            </IconNao>
+
+            <IconQuase
+                data-test="partial-icon"
+                status={status}
+                src={quase}>
+            </IconQuase>
+
+            <IconZap
+                data-test="zap-icon"
+                status={status}
+                src={certo}>
+            </IconZap>
+
             <Opcoes status={status}>
-                <NaoLembrei data-test="no-btn"><p>Não Lembrei</p></NaoLembrei>
-                <QuaseNaoLembrei data-test="partial-btn"><p>Quase não lembrei</p></QuaseNaoLembrei>
-                <Zap data-test="zap-btn"><p>Zap!</p></Zap>
+                <NaoLembrei
+                    onClick={clicarNaoLembrei}
+                    data-test="no-btn">
+                    <p>Não Lembrei</p>
+                </NaoLembrei>
+
+                <QuaseNaoLembrei
+                    onClick={clicarQuaseNaoLembrei}
+                    data-test="partial-btn">
+                    <p>Quase não lembrei</p>
+                </QuaseNaoLembrei>
+
+                <Zap
+                    onClick={clicarZap}
+                    data-test="zap-btn">
+                    <p>Zap!</p>
+                </Zap>
             </Opcoes>
         </Questao>
     );
@@ -58,13 +131,13 @@ const PerguntasTela = styled.main`
 
 const Questao = styled.div`
     width: 300px;
-    height: ${p => (p.status === 'numPergunta') ? '65px' : '131px'};
+    height: ${p => (p.status !== 'Pergunta' && p.status !== 'Resposta') ? '65px' : '131px'};
     margin-top: 25px;
-    background: ${p => (p.status === 'numPergunta') ? '#FFFFFF' : '#FFFFD4'};
+    background: ${p => (p.status !== 'Pergunta' && p.status !== 'Resposta') ? '#FFFFFF' : '#FFFFD4'};
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     display: flex;
-    align-items: ${p => (p.status === 'numPergunta') ? 'center' : 'flex-start'};
+    align-items: ${p => (p.status !== 'Pergunta' && p.status !== 'Resposta') ? 'center' : 'flex-start'};
     justify-content: space-between;
     flex-direction: ${p => p.status === 'Resposta' && 'column'}
 `
@@ -77,9 +150,9 @@ const TextCard = styled.p`
     font-weight: 700;
     font-size: 15px;
     line-height: 19px;
-    color: #333333;
+    color: ${p => p.cor};
     margin-left: 15px;
-    margin-top: ${p => (p.status !== 'numPergunta') && '10px'};
+    margin-top: ${p => (p.status === 'Pergunta' || p.status === 'Resposta') && '15px'};
 `
 const SetaPlay = styled.img`
     margin-right: 15px;
@@ -144,5 +217,21 @@ const Zap = styled.button`
     justify-content: center;
     align-items: center;
 `
+
+const IconNao = styled.img`
+    margin-right: 15px;
+    display: ${p => (p.status !== 'errou') && 'none'};
+`
+
+const IconQuase = styled.img`
+    margin-right: 15px;
+    display: ${p => (p.status !== 'quase') && 'none'};
+`
+const IconZap = styled.img`
+    margin-right: 15px;
+    display: ${p => (p.status !== 'zap') && 'none'};
+`
+
+
 
 export default Perguntas;
