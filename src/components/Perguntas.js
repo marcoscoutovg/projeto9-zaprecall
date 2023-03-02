@@ -153,6 +153,7 @@ const TextCard = styled.p`
     color: ${p => p.cor};
     margin-left: 15px;
     margin-top: ${p => (p.status === 'Pergunta' || p.status === 'Resposta') && '15px'};
+    ${p => (p.status === 'errou' || p.status === 'quase' || p.status === 'zap') && 'text-decoration: line-through;'}
 `
 const SetaPlay = styled.img`
     margin-right: 15px;
