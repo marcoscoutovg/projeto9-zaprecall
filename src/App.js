@@ -1,32 +1,25 @@
-import "./styles/reset.css"
-import "./styles/style.css"
-import logo from "./assets/logo.png"
-import Perguntas from "./components/Perguntas"
+import Perguntas from "./components/Perguntas";
+import Cabecalho from "./components/Cabecalho";
+import Rodape from "./components/Rodape";
+import styled from "styled-components";
 
-/* COMPONENTIZAÇÃO
-App() {
-  <Header />
-  <Main />
-  <Footer />
-}
-*/
 
 function App() {
+
   return (
-    <div className="tela">
-      <header className="cabecalho">
-        <img className="logo" src={logo} alt="logo"></img>
-        <h1 className="titulo">ZapRecall</h1>
-
-      </header>
-
+    <Tela>
+      <Cabecalho />
       <Perguntas />
-
-      <footer className="rodape">
-        <p className="concluidos">0/4 CONCLUÍDOS</p>
-      </footer>
-    </div>
+      <Rodape />
+    </Tela>
   );
 }
+
+const Tela = styled.div `
+  width: 100%;
+  height: 100%;
+  background: #FB6B6B;
+  border: 1px solid #DBDBDB;
+`
 
 export default App;
