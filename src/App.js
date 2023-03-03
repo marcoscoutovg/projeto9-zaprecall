@@ -2,15 +2,26 @@ import Perguntas from "./components/Perguntas";
 import Cabecalho from "./components/Cabecalho";
 import Rodape from "./components/Rodape";
 import styled from "styled-components";
+import cards from "./cards";
+import { useState } from "react";
 
 
 function App() {
 
+  const [concluida, setConcluida] = useState(0);
+
   return (
     <Tela>
       <Cabecalho />
-      <Perguntas />
-      <Rodape />
+      <Perguntas 
+      cards={cards}
+      concluida={concluida}
+      setConcluida={setConcluida}/>
+      <Rodape 
+      cards={cards}
+      concluida={concluida}
+      setConcluida={setConcluida}/>
+      
     </Tela>
   );
 }

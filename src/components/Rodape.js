@@ -1,9 +1,13 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-function Rodape() {
+function Rodape({cards, concluida}) {
+
+    const total = cards.length;
+
     return (
         <BarraInferior data-test="footer">
-            <Concluidos>0/4 CONCLUÍDOS</Concluidos>
+            <Concluidos>{concluida}/{total} CONCLUÍDOS</Concluidos>
         </BarraInferior>
     );
 }

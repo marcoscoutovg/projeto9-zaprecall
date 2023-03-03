@@ -1,4 +1,4 @@
-import cards from "../cards";
+
 import setaPlay from "../assets/seta_play.png";
 import setaVirar from "../assets/seta_virar.png";
 import certo from "../assets/icone_certo.png";
@@ -7,7 +7,7 @@ import quase from "../assets/icone_quase.png";
 import styled from 'styled-components';
 import { useState } from "react";
 
-function Perguntas() {
+function Perguntas({ cards, concluida, setConcluida }) {
 
     return (
         <PerguntasTela>
@@ -15,16 +15,20 @@ function Perguntas() {
                 key={c.question}
                 answer={c.answer}
                 question={c.question}
-                number={i + 1} />)}
+                number={i + 1}
+                concluida={concluida}
+                setConcluida={setConcluida} />)}
+
         </PerguntasTela>
     );
 }
 
-function IdCard({ question, number, answer }) {
+function IdCard({ question, number, answer, concluida, setConcluida }) {
 
     const [textoCard, setTextoCard] = useState("Pergunta");
     const [status, setStatus] = useState('numPergunta');
     const [cor, setCor] = useState('#333333')
+    
 
     function clicarPlay() {
         setTextoCard(question);
@@ -38,21 +42,23 @@ function IdCard({ question, number, answer }) {
 
     function clicarNaoLembrei() {
         setStatus('errou');
-        setTextoCard('Pergunta');
+        setTextoCard(`Pergunta ${number}`);
         setCor('#FF3030')
-
+        setConcluida(concluida+1)
     }
 
     function clicarQuaseNaoLembrei() {
         setStatus('quase');
-        setTextoCard('Pergunta');
+        setTextoCard(`Pergunta ${number}` );
         setCor('#FF922E')
+        setConcluida(concluida+1)
     }
 
     function clicarZap() {
         setStatus('zap');
-        setTextoCard('Pergunta');
+        setTextoCard(`Pergunta ${number}`);
         setCor('#2FBE34')
+        setConcluida(concluida+1)
     }
 
 
