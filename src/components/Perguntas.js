@@ -28,7 +28,7 @@ function IdCard({ question, number, answer, concluida,
 
     const [textoCard, setTextoCard] = useState("Pergunta");
     const [status, setStatus] = useState("numPergunta");
-    const [cor, setCor] = useState("#333333")
+    const [cor, setCor] = useState("#333333");
 
     function clicarPlay() {
         setTextoCard(question);
@@ -43,25 +43,25 @@ function IdCard({ question, number, answer, concluida,
     function clicarNaoLembrei() {
         setStatus("errou");
         setTextoCard(`Pergunta ${number}`);
-        setCor("#FF3030")
-        setConcluida(concluida + 1)
-        setAcertos([...acertos, erro])
+        setCor("#FF3030");
+        setConcluida(concluida + 1);
+        setAcertos([...acertos, erro]);
     }
 
     function clicarQuaseNaoLembrei() {
         setStatus("quase");
         setTextoCard(`Pergunta ${number}`);
-        setCor("#FF922E")
-        setConcluida(concluida + 1)
-        setAcertos([...acertos, quase])
+        setCor("#FF922E");
+        setConcluida(concluida + 1);
+        setAcertos([...acertos, quase]);
     }
 
     function clicarZap() {
         setStatus("zap");
         setTextoCard(`Pergunta ${number}`);
-        setCor("#2FBE34")
-        setConcluida(concluida + 1)
-        setAcertos([...acertos, certo])
+        setCor("#2FBE34");
+        setConcluida(concluida + 1);
+        setAcertos([...acertos, certo]);
     }
 
     return (
@@ -150,8 +150,8 @@ const Questao = styled.div`
     display: flex;
     align-items: ${p => (p.status !== "Pergunta" && p.status !== "Resposta") ? "center" : "flex-start"};
     justify-content: space-between;
-    flex-direction: ${p => p.status === "Resposta" && "column"}
-`
+    flex-direction: ${p => p.status === "Resposta" && "column;"}
+`;
 
 const TextCard = styled.p`
     width: 280px;
@@ -165,18 +165,18 @@ const TextCard = styled.p`
     margin-left: 15px;
     margin-top: ${p => (p.status === "Pergunta" || p.status === "Resposta") && "15px"};
     ${p => (p.status === "errou" || p.status === "quase" || p.status === "zap") && "text-decoration: line-through;"}
-`
+`;
 
 const SetaPlay = styled.img`
     margin-right: 15px;
-    display: ${p => p.status !== "numPergunta" && "none"}
-`
+    display: ${p => p.status !== "numPergunta" && "none"};
+`;
 
 const SetaVirar = styled.img`
     margin-top: ${p => (p.status === "Pergunta") && "105px"};
     margin-right: ${p => (p.status === "Pergunta") && "15px"};
     display: ${p => !(p.status === "Pergunta") && "none"};
-`
+`;
 
 const Opcoes = styled.div`
     width: 300px;
@@ -200,7 +200,7 @@ const Opcoes = styled.div`
         text-align: center;
         color: #FFFFFF;
     }
-`
+`;
 
 const NaoLembrei = styled.button`
     width: 85.17px;
@@ -210,7 +210,7 @@ const NaoLembrei = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const QuaseNaoLembrei = styled.button`
     width: 85.17px;
@@ -220,7 +220,7 @@ const QuaseNaoLembrei = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const Zap = styled.button`
     width: 85.17px;
@@ -230,20 +230,21 @@ const Zap = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const IconNao = styled.img`
     margin-right: 15px;
     display: ${p => (p.status !== "errou") && "none"};
-`
+`;
 
 const IconQuase = styled.img`
     margin-right: 15px;
     display: ${p => (p.status !== "quase") && "none"};
-`
+`;
+
 const IconZap = styled.img`
     margin-right: 15px;
     display: ${p => (p.status !== "zap") && "none"};
-`
+`;
 
 export default Perguntas;

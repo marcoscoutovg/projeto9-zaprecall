@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import styled from "styled-components";
 
 function BoasVindas({ setInicio }) {
@@ -23,14 +23,14 @@ function BoasVindas({ setInicio }) {
                 onClick={iniciar}>Iniciar Recall
             </BotaoInicio>
         </>
-    )
+    );
 }
 
 const LogoInicio = styled.img`
     width: 136px;
     height: 161px;
     margin-bottom: 13px;
-`
+`;
 
 const TituloInicio = styled.h1`
     width: 257px;
@@ -47,7 +47,7 @@ const TituloInicio = styled.h1`
     color: #FFFFFF;
     justify-content: center;
     margin-bottom: 30px;
-`
+`;
 
 const BotaoInicio = styled.button`
     width: 246px;
@@ -64,6 +64,6 @@ const BotaoInicio = styled.button`
     text-align: center;
     color: #D70900;
     margin-bottom: 80px;
-`
+`;
 
 export default BoasVindas;

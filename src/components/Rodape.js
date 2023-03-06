@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import party from "../assets/party.png";
 import erro from "../assets/icone_erro.png";
-import sad from "../assets/sad.png"
+import sad from "../assets/sad.png";
 import quase from "../assets/icone_quase.png";
 
 function Rodape({ cards, concluida, inicio, acertos }) {
@@ -66,7 +66,7 @@ const BarraInferior = styled.footer`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const Acertos = styled.div`
     width: auto;
@@ -74,13 +74,13 @@ const Acertos = styled.div`
     display: ${p => p.concluida > 0 ? "flex" : "none"};
     justify-content: center;
     margin-top: 5px;
-`
+`;
 
 const Lista = styled.img`
     width: 23px;
     height: 23px;
     margin-right: 5px;
-`
+`;
 
 const Concluidos = styled.p`
     width: auto;
@@ -93,7 +93,7 @@ const Concluidos = styled.p`
     color: #333333;
     display: flex;
     justify-content: center;
-`
+`;
 
 const MensagemFinal = styled.div`
     width: 222px;
@@ -103,12 +103,12 @@ const MensagemFinal = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 14px;
-`
+`;
 
 const TopoFinal = styled.div`
     display: flex;
     margin-bottom: 14px;
-`
+`;
 
 const TextoFinal = styled.p`
     font-family: "Recursive";
@@ -118,12 +118,12 @@ const TextoFinal = styled.p`
     line-height: 22px;
     text-align: center;
     color: #333333;
-`
+`;
 
 const ImagemFinal = styled.img`
     width: 23px;
     height: 23px;
-`
+`;
 
 const TituloFinal = styled.h2`
     font-family: "Recursive";
@@ -133,6 +133,6 @@ const TituloFinal = styled.h2`
     line-height: 22px;
     color: #333333;
     margin-left: 10px;
-`
+`;
 
 export default Rodape;

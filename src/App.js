@@ -49,15 +49,15 @@ const Inicio = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const Tela = styled.div`
   width: 100%;
   height: 100%;
   background: #FB6B6B;
   ${p => p.inicio === true && "display: none;"}
-  border: 1px solid #DBDBDB
+  border: 1px solid #DBDBDB;
   
-`
+`;
 
 export default App;
