@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import styled from "styled-components";
 
 function Cabecalho() {
@@ -16,12 +16,12 @@ const Topo = styled.header`
     align-items: center;
     margin-top: 45px;
     margin-bottom: 25px;
-`
+`;
 
 const Logo = styled.img`
     width: 52px;
     height: 60px;
-`
+`;
 
 const Titulo = styled.h1`
     width: 203.17px;
@@ -38,6 +38,6 @@ const Titulo = styled.h1`
     letter-spacing: -0.012em;
     color: #FFFFFF;
     transform: rotate(0.58deg);
-`
+`;
 
 export default Cabecalho;

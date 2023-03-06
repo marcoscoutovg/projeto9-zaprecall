@@ -7,6 +7,6 @@ const cards = [
 	{ question: "Usamos o npm para __", answer: "Gerenciar os pacotes necessários e suas dependências" },
 	{ question: "Usamos props para __", answer: "Passar diferentes informações para componentes" },
 	{ question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
-]
+];
 
 export default cards;
